@@ -1,8 +1,7 @@
 import re
 import streamlit as st
 import random
-import pyperclip
-from streamlit.components.v1 import html
+
 
 st.title("Password Strength Meter")
 
@@ -77,15 +76,3 @@ if st.button("Generate Password"):
 
 
 
-def copy_to_clipboard_js(text):
-    html(f"""
-    <script>
-    navigator.clipboard.writeText("{text}")
-    .then(() => {{alert("Password copied to clipboard!");}})
-    .catch(err => {{alert("Error: " + err);}});
-    </script>
-    """)
-
-# Add a button to copy the pass to clipboard
-if st.button("Copy to Clipboard"):
-    copy_to_clipboard_js(gen_pass)
