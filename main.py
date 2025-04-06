@@ -74,7 +74,14 @@ if st.button("Generate Password"):
     # Display the generated password in a text box
     st.text_area("Generated Password", value=gen_pass, height=100)
 
+def copy_to_clipboard(text):
+    try:
+        pyperclip.copy(text)
+        st.success("Password copied to clipboard!")
+    except pyperclip.PyperclipException:
+        st.warning("Clipboard functionality is not supported in this environment.")
+
+
 # Add a button to copy the pass to clipboard
 if st.button("Copy to Clipboard"):
-    pyperclip.copy(gen_pass)  # Copy the pass to clipboard
-    st.success("String copied to clipboard!")  # Show success message after copying
+    copy_to_clipboard(gen_pass)
